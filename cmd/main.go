@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"log"
-	"os"
 
 	"wallet-simulator-go/internal/db"
 
@@ -18,13 +17,7 @@ func main() {
 	}
 
 	// Connect to database
-	dbFile := os.Getenv("DB_FILE")
-	if dbFile == "" {
-		log.Fatal("Environment variable DB_FILE is not set")
-	}
-
-	// Connect to database
-	database, err := db.NewConnection(dbFile)
+	database, err := db.NewConnection()
 	if err != nil {
 		log.Fatalf("Failed to connect to database: %v", err)
 	}
